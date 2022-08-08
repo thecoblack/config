@@ -7,4 +7,11 @@ require('plugins.nvim-cmp')
 require('keymaps')
 require('maps')
 
-require('lspconfig')['pyright'].setup{}
+local lsp = require('lspconfig')
+lsp.pyright.setup{}
+lsp.jedi_language_server.setup{}
+lsp.sumneko_lua.setup{}
+lsp.tsserver.setup{}
+lsp.cssls.setup{}
+lsp.intelephense.setup{}
+lsp.html.setup{}
