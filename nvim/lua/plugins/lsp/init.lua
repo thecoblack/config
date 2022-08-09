@@ -11,4 +11,28 @@ local opts = {
 	},
 }
 
+servers = { 
+    "pyright", 
+    "sumneko_lua", 
+    "tsserver",
+    "cssls",
+    "intelephense",
+    "html"
+}
+
+local lsp = require('lspconfig')
+for _, server in pairs(servers) do
+    lsp[server].setup{
+        on_attach=on_attach
+    }
+end
+    
+
+--lsp.pyright.setup{}
+--lsp.jedi_language_server.setup{}
+--lsp.sumneko_lua.setup{}
+--lsp.tsserver.setup{}
+--lsp.cssls.setup{}
+--lsp.intelephense.setup{}
+--lsp.html.setup{}
 
