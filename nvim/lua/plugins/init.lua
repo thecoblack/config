@@ -48,4 +48,6 @@ return require('packer').startup(function(use)
     use {"hrsh7th/cmp-cmdline"}
 
     use {'editorconfig/editorconfig-vim'}
+
+    use {'b3nj5m1n/kommentary'}
 end)

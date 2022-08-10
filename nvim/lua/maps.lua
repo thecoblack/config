@@ -6,9 +6,14 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map("n", "<leader>f", ":Telescope find_files<CR>", nil) map("n", "<leader>b", ":Telescope buffers<CR>", nil)
+map("n", "<leader>f", ":Telescope find_files<CR>", nil)
+map("n", "<leader>b", ":Telescope buffers<CR>", nil)
 map("n", "<leader>`", ":Telescope project<CR>", nil)
 map("n", "<leader>t", ":Telescope<CR>", nil)
+
+-- NERDCommenter
+
+map("v", "<C-;>", "<Plug>NERDCommenterToggle", {})
 
 -- harpoon
 
@@ -41,4 +46,3 @@ map("n", "<leader>wa", "<cmd>lua require('telescope').extensions.git_worktree.cr
 
 map("n", "<leader>wc", ":lua require('config.git_worktree').CreateBranch()<CR>", nil)
 
-vim.api.nvim_command('set clipboard=unnamedplus')
