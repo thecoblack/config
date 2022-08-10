@@ -43,4 +43,5 @@ vim.opt.smartcase = true
 vim.g.mapleader = ","
 
 vim.cmd('colorscheme tokyonight')
-vim.api.nvim_command('set clipboard=unnamedplus')
+-- vim.api.nvim_command('set clipboard=unnamedplus')
+-- vim.api.nvim_command('set mouse=a')

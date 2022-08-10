@@ -13,7 +13,14 @@ map("n", "<leader>t", ":Telescope<CR>", nil)
 
 -- NERDCommenter
 
-map("v", "<C-;>", "<Plug>NERDCommenterToggle", {})
+map("v", "<C-;>", "<cmd>NERDCommenterToggle<CR>", nil)
+
+-- Tree
+map("n", "<leader>n", ':NvimTreeToggle<CR>', nil)
+
+-- Bufferline
+
+
 
 -- harpoon
 

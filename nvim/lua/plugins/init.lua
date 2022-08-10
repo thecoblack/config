@@ -2,6 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use) 
     use "wbthomason/packer.nvim"
+    -- use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -15,17 +16,6 @@ return require('packer').startup(function(use)
 
     use {'neovim/nvim-lspconfig'}
     use {"williamboman/nvim-lsp-installer"}
-    --use {"rishabhrd/nvim-lsputils"}
-    --use {
-     --   "neovim/nvim-lspconfig",
-      --  opt=true,
-       -- event="BufReadPre",
-        --wants={"nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp"},
-        --requires={
-         --   "williamboman/nvim-lsp-installer",
-          --  "ray-x/lsp_signature.nvim",
-        --},
-   -- }
 
     use {
         "folke/which-key.nvim",
@@ -48,6 +38,7 @@ return require('packer').startup(function(use)
     use {"hrsh7th/cmp-cmdline"}
 
     use {'editorconfig/editorconfig-vim'}
+    use {'akinsho/bufferline.nvim', tag = "v2.*"}
+    use {'kyazdani42/nvim-tree.lua', tag='nightly'}
 
-    use {'b3nj5m1n/kommentary'}
 end)

@@ -9,4 +9,5 @@
 ## Future plugins
 
 - neogen: https://github.com/danymat/neogen  
+- bufferline: https://github.com/akinsho/bufferline.nvim 
 

@@ -5,6 +5,7 @@ Plug 'preservim/nerdcommenter'
 call plug#end()
 
 set clipboard+=unnamedplus
+set mouse=a
 
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -32,10 +33,13 @@ let g:NERDCommentEmptyLines = 1
 "nnoremap <C-;> :call NERDComment(0, "toggle")<CR> 
 
 lua require('plugins')
-lua require('settings')
 lua require('plugins.telescope')
 lua require('plugins.lsp')
-lua require('nvim-lsp-installer')
 lua require('plugins.nvim-cmp')
+lua require('plugins.tree')
+lua require('plugins.bufferline')
+
+lua require('nvim-lsp-installer')
+lua require('settings')
 lua require('keymaps')
 lua require('maps')
