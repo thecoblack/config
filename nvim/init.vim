@@ -4,7 +4,22 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'preservim/nerdcommenter'
 call plug#end()
 
-set clipboard+=unnamedplus
+
+" let g:clipboard = {
+"             \   'name': 'winyank',
+"             \   'copy': {
+"             \       '+': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i --crlf',
+"             \       '*': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i --crlf',
+"             \   },
+"             \   'paste': {
+"             \       '+': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o --lf',
+"             \       '*': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o --lf',
+"             \   },
+"             \   'cache_enabled': 0,
+"             \}
+
+
+" set clipboard+=unnamedplus
 set mouse=a
 
 map <leader>n :NERDTreeToggle<CR>

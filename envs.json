@@ -1,0 +1,13 @@
+{
+    "envs": {
+        "default": {
+            "folder": {
+                "nvim":"~/.config/nvim"
+            },
+            "file": {
+                ".editorconfig":"~/.editorconfig"
+            }
+        }
+    },
+    current_env: "default"
+}

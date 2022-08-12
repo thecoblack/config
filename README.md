@@ -1,5 +1,9 @@
 # Configs
 
+## Apt
+
+- xsel: apt install xsel
+
 ## Servers
 
 - lua: https://github.com/sumneko/lua-language-server
