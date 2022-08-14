@@ -1,13 +1,15 @@
 {
     "envs": {
-        "default": {
-            "folder": {
-                "nvim":"~/.config/nvim"
-            },
-            "file": {
-                ".editorconfig":"~/.editorconfig"
+        "linux": {
+            "links": {
+                ".editorconfig": "~/.editorconfig",
+                "nvim": "~/.config/nvim"
             }
+        },
+        "wsl": {
+            "take": "linux"
         }
     },
-    current_env: "default"
+    "current_env": "linux",
+    "default_env": "linux"
 }

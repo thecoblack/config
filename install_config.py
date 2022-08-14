@@ -1,50 +1,87 @@
 import os
 import sys
 import json
+from typing import Callable, Dict, List, NewType, Union, Optional 
+from copy import deepcopy
 
-from typing import List, Dict, Callable, Union
+EnvType = NewType("EnvType", Dict[str, Dict[str, Union[str, Dict[str, str]]]])
+
+ConfType = NewType("ConfType", Dict[str, Union[str, EnvType]])
 
 
-def create_link(src: str, dest: str) -> None:
-    pass
-
-
-def folder(conf: Dict[str, str]) -> None:
+def link(conf_key: str, conf: Dict[str, str]) -> None:
     for src, dest in conf.items():
-        if not os.path.exists(dest):
-            os.mkdir(dest) 
+        src = os.path.abspath(f"{conf_key}/{src}")
+        dest = os.path.expanduser(dest)
+
+        if not os.path.exists(src):
+            print("[WARN] The file or foler path does not exists")
+            continue
+
+        if not os.path.islink(dest):
+            directory_path: str = os.path.dirname(dest)
+            os.makedirs(directory_path, exist_ok=True)
+        else:
+            os.unlink(dest)
+
+        os.symlink(src, dest, os.path.isfile(src))
 
 
-def file(conf: Dict[str, str]) -> None:
-    pass
+def main(env: Optional[str] = None):
+    conf_file: ConfType = {}
+    with open("envs.json", "r") as f:
+        conf_file: ConfType = json.loads(f.read())
+    backup_conf: ConfType = deepcopy(conf_file) 
 
+    if env not in conf_file["envs"]:
+        print(f"{env} does not exists in envirioments.")
+        return
 
-def compare_envs(curr_env_conf: str) -> None:
-    pass
+    env_name: str = env if not env == None else conf_file["default_env"]
+    selected_env: EnvType = conf_file["envs"][env_name]
+    if "take" in selected_env and selected_env["take"] in conf_file["envs"]:
+        selected_env = conf_file["envs"][selected_env["take"]].update(selected_env)
 
+    if "links" in selected_env:
+        link(env_name, selected_env["links"])
 
-def main(args: List[str]):
-    envs: Dict[str, Dict[str, Dict[str, str]]] = {}
-    curr_env: str = ""
-    with open('envs.json', 'r') as f:
-        json_content: Dict[str, Union[Dict, str]] = json.loads(f.read())
-        curr_env, envs = json_content["current_env"], json_content["envs"]
+    conf_file["current_env"] = env_name
 
-    if "-u" in args:
-        # Compare the env saved in the envs folder 
-        # with current configuration. If detects changes
-        # in the current configuration, update 
-        # the env saved configuration
-        pass
-
-    actions: Dict[str, Callable] = {
-        "folder": folder,
-        "file": file 
-    }
-    env_conf: Dict[str, Dict[str, str]] = envs[args[0]]
-    for key, conf in env_conf.items():
-        actions[key](conf)
+    with open("envs.json", "w") as f:
+        try:
+            f.write(json.dumps(conf_file, indent=4))
+        except:
+            f.write(json.dumps(backup_conf, indent=4))
+            raise RuntimeError(
+                "A storage error has occurred, check the configured data"
+            )
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    args: List[str] = sys.argv 
+    if "help" in args:
+        print(
+            "Usage:\n"
+            f"    \"python3 {args[0]} <env_key: str>\" to change the envirioment\n"
+            f"    \"python3 {args[0]}\" init to initialize the configuration file"
+        )
+    elif "init" in args:
+        if os.path.exists("envs.json"):
+            print("The configuration file is already initialized")
+            sys.exit() 
+
+        conf_file: ConfType = {
+            "envs": {
+                "default": {
+                    "links": {},
+                    "take": ""
+                }
+            },
+            "current_env": "",
+            "default_env": "default"
+        }
+
+        with open("envs.json", "w") as f:
+            f.write(json.dumps(conf_file))
+    else:
+        main(args[1] if len(args) == 2 else None)

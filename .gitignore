@@ -1,1 +1,2 @@
-nvim/servers
+*/nvim/servers
+packer_compiled.lua
