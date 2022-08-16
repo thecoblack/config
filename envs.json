@@ -3,15 +3,12 @@
         "linux": {
             "links": {
                 ".editorconfig": "~/.editorconfig",
-                "nvim": "~/.config/nvim"
+                "nvim": "~/.config/nvim",
+                ".tmux.conf": "~/.tmux.conf"
             }
         },
         "wsl": {
-            "take": "linux",
-            "links": {
-                ".editorconfig": "~/.editorconfig",
-                "nvim": "~/.config/nvim"
-            }
+            "take": "linux"
         }
     },
     "current_env": "wsl",

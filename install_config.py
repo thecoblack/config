@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from typing import Callable, Dict, List, NewType, Union, Optional 
+from typing import Callable, Dict, List, NewType, Union, Optional
 from copy import deepcopy
 
 EnvType = NewType("EnvType", Dict[str, Dict[str, Union[str, Dict[str, str]]]])
@@ -30,7 +30,7 @@ def main(env: Optional[str] = None):
     conf_file: ConfType = {}
     with open("envs.json", "r") as f:
         conf_file: ConfType = json.loads(f.read())
-    backup_conf: ConfType = deepcopy(conf_file) 
+    backup_conf: ConfType = deepcopy(conf_file)
 
     if env not in conf_file["envs"]:
         print(f"{env} does not exists in envirioments.")
@@ -39,10 +39,7 @@ def main(env: Optional[str] = None):
     env_name: str = env if not env == None else conf_file["default_env"]
     selected_env: EnvType = conf_file["envs"][env_name]
     if "take" in selected_env and selected_env["take"] in conf_file["envs"]:
-        selected_env = {
-                **conf_file["envs"][selected_env["take"]],
-                **selected_env
-        }
+        selected_env = {**conf_file["envs"][selected_env["take"]], **selected_env}
 
     if "links" in selected_env:
         link(env_name, selected_env["links"])
@@ -60,27 +57,22 @@ def main(env: Optional[str] = None):
 
 
 if __name__ == "__main__":
-    args: List[str] = sys.argv 
+    args: List[str] = sys.argv
     if "help" in args:
         print(
             "Usage:\n"
-            f"    \"python3 {args[0]} <env_key: str>\" to change the envirioment\n"
-            f"    \"python3 {args[0]} init\" to initialize the configuration file"
+            f'    "python3 {args[0]} <env_key: str>" to change the envirioment\n'
+            f'    "python3 {args[0]} init" to initialize the configuration file'
         )
     elif "init" in args:
         if os.path.exists("envs.json"):
             print("The configuration file is already initialized")
-            sys.exit() 
+            sys.exit()
 
         conf_file: ConfType = {
-            "envs": {
-                "default": {
-                    "links": {},
-                    "take": ""
-                }
-            },
+            "envs": {"default": {"links": {}, "take": ""}},
             "current_env": "",
-            "default_env": "default"
+            "default_env": "default",
         }
 
         with open("envs.json", "w") as f:
