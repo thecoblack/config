@@ -5,7 +5,6 @@ from typing import Callable, Dict, List, NewType, Union, Optional
 from copy import deepcopy
 
 EnvType = NewType("EnvType", Dict[str, Dict[str, Union[str, Dict[str, str]]]])
-
 ConfType = NewType("ConfType", Dict[str, Union[str, EnvType]])
 
 
@@ -40,7 +39,10 @@ def main(env: Optional[str] = None):
     env_name: str = env if not env == None else conf_file["default_env"]
     selected_env: EnvType = conf_file["envs"][env_name]
     if "take" in selected_env and selected_env["take"] in conf_file["envs"]:
-        selected_env = conf_file["envs"][selected_env["take"]].update(selected_env)
+        selected_env = {
+                **conf_file["envs"][selected_env["take"]],
+                **selected_env
+        }
 
     if "links" in selected_env:
         link(env_name, selected_env["links"])
@@ -63,7 +65,7 @@ if __name__ == "__main__":
         print(
             "Usage:\n"
             f"    \"python3 {args[0]} <env_key: str>\" to change the envirioment\n"
-            f"    \"python3 {args[0]}\" init to initialize the configuration file"
+            f"    \"python3 {args[0]} init\" to initialize the configuration file"
         )
     elif "init" in args:
         if os.path.exists("envs.json"):

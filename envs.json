@@ -7,9 +7,13 @@
             }
         },
         "wsl": {
-            "take": "linux"
+            "take": "linux",
+            "links": {
+                ".editorconfig": "~/.editorconfig",
+                "nvim": "~/.config/nvim"
+            }
         }
     },
-    "current_env": "linux",
+    "current_env": "wsl",
     "default_env": "linux"
 }
