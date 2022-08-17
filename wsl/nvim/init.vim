@@ -2,6 +2,8 @@ let mapleader =","
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'preservim/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-vdebug/vdebug'
 call plug#end()
 
 set mouse=a
