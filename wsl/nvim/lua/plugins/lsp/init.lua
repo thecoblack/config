@@ -4,19 +4,12 @@ local function on_attach(client, bufnr)
 	require('keymaps').setup(client, bufnr)
 end
 
--- local opts = {
---     on_attach = on_attach,
---     flags = {
---         debounce_text_changes=150,
---     },
--- }
-
 local servers = {
     "pyright",
-    "sumneko_lua",
+--    "sumneko_lua",
     "tsserver",
     "intelephense",
-    "html"
+    "html",
 }
 
 local lsp = require('lspconfig')
@@ -25,22 +18,4 @@ for _, server in pairs(servers) do
         on_attach=on_attach
     }
 end
-
--- cssls autocompletation
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSuport = true
-
-require('lspconfig')['cssls'].setup({
-    capabilities=capabilities,
-    cmd={'css-languageserver', '--stdio'},
-})
-
-
---lsp.pyright.setup{}
---lsp.jedi_language_server.setup{}
---lsp.sumneko_lua.setup{}
---lsp.tsserver.setup{}
---lsp.cssls.setup{}
---lsp.intelephense.setup{}
---lsp.html.setup{}
 
