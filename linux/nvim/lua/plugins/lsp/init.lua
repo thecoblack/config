@@ -16,7 +16,9 @@ local servers = {
     "sumneko_lua",
     "tsserver",
     "intelephense",
-    "html"
+    "html",
+    "gopls",
+    "vimls"
 }
 
 local lsp = require('lspconfig')
@@ -35,12 +37,7 @@ require('lspconfig')['cssls'].setup({
     cmd={'css-languageserver', '--stdio'},
 })
 
-
---lsp.pyright.setup{}
---lsp.jedi_language_server.setup{}
---lsp.sumneko_lua.setup{}
---lsp.tsserver.setup{}
---lsp.cssls.setup{}
---lsp.intelephense.setup{}
---lsp.html.setup{}
-
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.setup({
+    automatic_installation = false,
+})

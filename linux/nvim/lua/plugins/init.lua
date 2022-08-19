@@ -14,8 +14,9 @@ return require('packer').startup(function(use)
     }
     use {'nvim-telescope/telescope-project.nvim'}
 
-    use {'neovim/nvim-lspconfig'}
     use {"williamboman/nvim-lsp-installer"}
+    use {'neovim/nvim-lspconfig'}
+
 
     use {
         "folke/which-key.nvim",

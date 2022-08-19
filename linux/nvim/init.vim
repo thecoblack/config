@@ -2,23 +2,11 @@ let mapleader =","
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'preservim/nerdcommenter'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
-
-" let g:clipboard = {
-"             \   'name': 'winyank',
-"             \   'copy': {
-"             \       '+': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i --crlf',
-"             \       '*': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -i --crlf',
-"             \   },
-"             \   'paste': {
-"             \       '+': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o --lf',
-"             \       '*': '/mnt/c/ProgramData/chocolatey/bin/win32yank.exe -o --lf',
-"             \   },
-"             \   'cache_enabled': 0,
-"             \}
-
-
+let g:coc_node_path = '/usr/local/bin/node'
 " set clipboard+=unnamedplus
 set mouse=a
 
