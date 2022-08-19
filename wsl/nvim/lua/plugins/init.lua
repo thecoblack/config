@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use) 
     use "wbthomason/packer.nvim"
-    -- use {'kyazdani42/nvim-web-devicons'}
+    use {'kyazdani42/nvim-web-devicons'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
     use {"gruvbox-community/gruvbox"}
     use {"folke/tokyonight.nvim"}
 
+    use {"L3MON4D3/LuaSnip"}
+    use {"saadparwaiz1/cmp_luasnip"}
+
     use {"hrsh7th/nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp"}
     use {"hrsh7th/cmp-buffer"}
@@ -40,5 +43,6 @@ return require('packer').startup(function(use)
     use {'editorconfig/editorconfig-vim'}
     use {'akinsho/bufferline.nvim', tag = "v2.*"}
     use {'kyazdani42/nvim-tree.lua', tag='nightly'}
-
+--    use {'ojroques/nvim-hardline'}
+    use {'nvim-lualine/lualine.nvim'}
 end)

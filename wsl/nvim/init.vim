@@ -2,7 +2,7 @@ let mapleader =","
 " Directorio de plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'preservim/nerdcommenter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-vdebug/vdebug'
 call plug#end()
 
@@ -17,11 +17,11 @@ else
 endif
 
 
-let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
-let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-
-" Cargar fuente Powerline y símbolos (ver nota)
-let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
+" let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
+" 
+" " Cargar fuente Powerline y símbolos (ver nota)
+" let g:airline_powerline_fonts = 1
 
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -34,11 +34,13 @@ let g:NERDCommentEmptyLines = 1
 "nnoremap <C-;> :call NERDComment(0, "toggle")<CR> 
 
 lua require('plugins')
+lua require('plugins.icons')
 lua require('plugins.telescope')
 lua require('plugins.lsp')
 lua require('plugins.nvim-cmp')
 lua require('plugins.tree')
 lua require('plugins.bufferline')
+lua require('plugins.statusline')
 
 lua require('nvim-lsp-installer')
 lua require('settings')

@@ -8,7 +8,10 @@
             }
         },
         "wsl": {
-            "take": "linux"
+            "take": "linux",
+            "links": {
+                "../fonts": "~/.local/share/fonts"
+            }
         }
     },
     "current_env": "wsl",
