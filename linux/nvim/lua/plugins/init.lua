@@ -29,8 +29,13 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'kyazdani42/nvim-web-devicons'}
+
     use {"gruvbox-community/gruvbox"}
     use {"folke/tokyonight.nvim"}
+
+    use {"L3MON4D3/LuaSnip"}
+    use {"saadparwaiz1/cmp_luasnip"}
 
     use {"hrsh7th/nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp"}
@@ -41,5 +46,6 @@ return require('packer').startup(function(use)
     use {'editorconfig/editorconfig-vim'}
     use {'akinsho/bufferline.nvim', tag = "v2.*"}
     use {'kyazdani42/nvim-tree.lua', tag='nightly'}
+    use {'nvim-lualine/lualine.nvim'}
 
 end)

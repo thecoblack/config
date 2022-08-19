@@ -4,7 +4,8 @@
             "links": {
                 ".editorconfig": "~/.editorconfig",
                 "nvim": "~/.config/nvim",
-                ".tmux.conf": "~/.tmux.conf"
+                ".tmux.conf": "~/.tmux.conf",
+                "kitty": "~/.config/kitty"
             }
         },
         "wsl": {
@@ -14,6 +15,6 @@
             }
         }
     },
-    "current_env": "wsl",
+    "current_env": "linux",
     "default_env": "linux"
 }

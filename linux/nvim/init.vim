@@ -36,11 +36,13 @@ let g:NERDCommentEmptyLines = 1
 "nnoremap <C-;> :call NERDComment(0, "toggle")<CR> 
 
 lua require('plugins')
+lua require('plugins.icons')
 lua require('plugins.telescope')
 lua require('plugins.lsp')
 lua require('plugins.nvim-cmp')
 lua require('plugins.tree')
 lua require('plugins.bufferline')
+lua require('plugins.statusline')
 
 lua require('nvim-lsp-installer')
 lua require('settings')
