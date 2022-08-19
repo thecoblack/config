@@ -14,7 +14,13 @@ def link(conf_key: str, conf: Dict[str, str]) -> None:
         dest = os.path.expanduser(dest)
 
         if not os.path.exists(src):
-            print("[WARN] The file or foler path does not exists")
+            print("[WARN] The file or directory path does not exists")
+            continue
+        elif not os.path.islink(dest) and (os.path.isfile(dest) or os.path.isdir(dest)):
+            print(
+                "[WARN] The destination path aims to a file/directory,\n"
+                f" move {dest} to {src}"
+            )
             continue
 
         if not os.path.islink(dest):
@@ -40,6 +46,8 @@ def main(env: Optional[str] = None):
     selected_env: EnvType = conf_file["envs"][env_name]
     if "take" in selected_env and selected_env["take"] in conf_file["envs"]:
         selected_env = {**conf_file["envs"][selected_env["take"]], **selected_env}
+
+    print(selected_env)
 
     if "links" in selected_env:
         link(env_name, selected_env["links"])
