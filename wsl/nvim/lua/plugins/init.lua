@@ -18,6 +18,10 @@ return require('packer').startup(function(use)
     use {"williamboman/nvim-lsp-installer"}
 
     use {
+        'nvim-treesitter/nvim-treesitter'
+    }
+
+    use {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup {

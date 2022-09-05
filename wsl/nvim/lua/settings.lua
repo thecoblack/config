@@ -61,6 +61,6 @@ vim.g.clipboard = {
 vim.api.nvim_command('set clipboard=unnamedplus')
 vim.diagnostic.config({
     virtual_text = false,
-    signs = false,
+    signs = true,
     underline = false,
 })

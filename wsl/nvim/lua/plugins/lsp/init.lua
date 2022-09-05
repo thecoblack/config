@@ -10,6 +10,7 @@ local servers = {
     "tsserver",
     "intelephense",
     "html",
+    "texlab"
 }
 
 local lsp = require('lspconfig')
