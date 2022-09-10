@@ -19,3 +19,9 @@ for _, server in pairs(servers) do
     }
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+lsp.cssls.setup {
+    capabilities=capabilities,
+}

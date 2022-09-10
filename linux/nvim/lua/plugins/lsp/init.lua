@@ -18,7 +18,9 @@ local servers = {
     "intelephense",
     "html",
     "gopls",
-    "vimls"
+    "vimls",
+    "ccls",
+    "cssls"
 }
 
 local lsp = require('lspconfig')
@@ -28,14 +30,28 @@ for _, server in pairs(servers) do
     }
 end
 
--- cssls autocompletation
+lsp.tsserver.setup {
+    on_attach=on_attach,
+    filetypes={"typescript", "typescriptreact", "typescript.tsx"},
+    cmd={"typescript-language-server", "--stdio"}
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSuport = true
 
-require('lspconfig')['cssls'].setup({
+lsp.cssls.setup {
     capabilities=capabilities,
-    cmd={'css-languageserver', '--stdio'},
-})
+    cmd={'vscode-css-language-server', '--stdio'},
+
+}
+
+-- cssls autocompletation
+
+-- require('lspconfig')['cssls'].setup({
+--     -- capabilities=capabilities,
+--     cmd={'vscode-css-language-server', '--stdio'},
+-- })
 
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.setup({
